@@ -3,7 +3,10 @@ package net.redlinesoft.apps.photoswipe;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.LinearLayout;
+
 import org.apache.cordova.*;
+import com.google.ads.*;
 
 public class MainActivity extends DroidGap {
 
@@ -11,6 +14,12 @@ public class MainActivity extends DroidGap {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.loadUrl("file:///android_asset/www/index.html");
+        
+        AdView adView = new AdView(this, AdSize.BANNER, "a14fdd8b6e03371");      
+        LinearLayout layout = super.root;
+        layout.addView(adView);
+        layout.setHorizontalGravity(android.view.Gravity.CENTER_HORIZONTAL);
+        adView.loadAd(new AdRequest());
     }
 
     @Override
